@@ -8,24 +8,21 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Service
 public class RequestService {
 
-    public String getJSON(int count) {
+    public String getJSON(int size) {
         HttpURLConnection c = null;
         int timeout = 1000;
         try {
-            URL u = new URL("https://randommer.io/api/Misc/Random-Address?number="+ count +"&culture=ru");
+            URL u = new URL("https://random-data-api.com/api/address/random_address?size="+size);
             c = (HttpURLConnection) u.openConnection();
             c.setRequestMethod("GET");
             c.setRequestProperty("Content-length", "0");
-            c.setRequestProperty("accept", "*/*");
-            c.setRequestProperty("X-Api-Key", "4a622a1a257841a29ff3d4bc37715133");
+            c.setRequestProperty("accept", "application/json");
             c.setUseCaches(false);
             c.setAllowUserInteraction(false);
             c.setConnectTimeout(timeout);
@@ -60,11 +57,5 @@ public class RequestService {
             }
         }
         return null;
-    }
-
-    public List<String> getData(String json) {
-        List<String> params = new ArrayList<>();
-        params.addAll(List.of(json.split(",")));
-        return params;
     }
 }

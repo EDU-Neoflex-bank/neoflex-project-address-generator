@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.neoflex.addressgenerator.model.Address;
 import ru.neoflex.addressgenerator.service.AddressService;
-import ru.neoflex.addressgenerator.service.RequestService;
 
 import java.util.List;
 

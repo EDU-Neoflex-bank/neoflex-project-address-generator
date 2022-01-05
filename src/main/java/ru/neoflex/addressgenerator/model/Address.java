@@ -1,76 +1,80 @@
 package ru.neoflex.addressgenerator.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Objects;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Address {
-    private String street;
-    private int houseNumber;
-    private String flat;
-    private int postIndex;
+    @JsonProperty(value = "city")
     private String city;
-    private String state;
+    @JsonProperty(value = "street_name")
+    private String streetName;
+    @JsonProperty(value = "street_address")
+    private String streetAddress;
+    @JsonProperty(value = "building_number")
+    private String buildingNumber;
+    @JsonProperty(value = "zip_code")
+    private String zipCode;
+    @JsonProperty(value = "postcode")
+    private String postCode;
+    @JsonProperty(value = "country")
     private String country;
 
-    public Address(String street, int houseNumber, String flat, int postIndex, String city, String state, String country) {
-        this.street = street;
-        this.houseNumber = houseNumber;
-        this.flat = flat;
-        this.postIndex = postIndex;
-        this.city = city;
-        this.state = state;
-        this.country = country;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public int getHouseNumber() {
-        return houseNumber;
-    }
-
-    public void setHouseNumber(int houseNumber) {
-        this.houseNumber = houseNumber;
-    }
-
-    public String getFlat() {
-        return flat;
-    }
-
-    public void setFlat(String flat) {
-        this.flat = flat;
-    }
-
-    public int getPostIndex() {
-        return postIndex;
-    }
-
-    public void setPostIndex(int postIndex) {
-        this.postIndex = postIndex;
+    public Address() {
     }
 
     public String getCity() {
         return city;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public String getStreetName() {
+        return streetName;
     }
 
-    public String getState() {
-        return state;
+    public String getStreetAddress() {
+        return streetAddress;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public String getBuildingNumber() {
+        return buildingNumber;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public String getPostCode() {
+        return postCode;
     }
 
     public String getCountry() {
         return country;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
+    }
+
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
+
+    public void setBuildingNumber(String buildingNumber) {
+        this.buildingNumber = buildingNumber;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
     }
 
     public void setCountry(String country) {
@@ -82,23 +86,23 @@ public class Address {
         if (this == o) return true;
         if (!(o instanceof Address)) return false;
         Address address = (Address) o;
-        return getHouseNumber() == address.getHouseNumber() && getPostIndex() == address.getPostIndex() && getStreet().equals(address.getStreet()) && getFlat().equals(address.getFlat()) && getCity().equals(address.getCity()) && getState().equals(address.getState()) && getCountry().equals(address.getCountry());
+        return Objects.equals(getCity(), address.getCity()) && Objects.equals(getStreetName(), address.getStreetName()) && Objects.equals(getStreetAddress(), address.getStreetAddress()) && Objects.equals(getBuildingNumber(), address.getBuildingNumber()) && Objects.equals(getZipCode(), address.getZipCode()) && Objects.equals(getPostCode(), address.getPostCode()) && Objects.equals(getCountry(), address.getCountry());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getStreet(), getHouseNumber(), getFlat(), getPostIndex(), getCity(), getState(), getCountry());
+        return Objects.hash(getCity(), getStreetName(), getStreetAddress(), getBuildingNumber(), getZipCode(), getPostCode(), getCountry());
     }
 
     @Override
     public String toString() {
         return "Address{" +
-                "street='" + street + '\'' +
-                ", houseNumber=" + houseNumber +
-                ", flat='" + flat + '\'' +
-                ", postIndex=" + postIndex +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
+                "city='" + city + '\'' +
+                ", streetName='" + streetName + '\'' +
+                ", streetAddress='" + streetAddress + '\'' +
+                ", buildingNumber='" + buildingNumber + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", postcode='" + postCode + '\'' +
                 ", country='" + country + '\'' +
                 '}';
     }
