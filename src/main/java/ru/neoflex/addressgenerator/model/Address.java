@@ -9,16 +9,22 @@ import java.util.Objects;
 public class Address {
     @JsonProperty(value = "city")
     private String city;
+
     @JsonProperty(value = "street_name")
     private String streetName;
+
     @JsonProperty(value = "street_address")
     private String streetAddress;
+
     @JsonProperty(value = "building_number")
     private String buildingNumber;
+
     @JsonProperty(value = "zip_code")
     private String zipCode;
+
     @JsonProperty(value = "postcode")
     private String postCode;
+
     @JsonProperty(value = "country")
     private String country;
 
